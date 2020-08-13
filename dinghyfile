@@ -1,22 +1,46 @@
 {
-  "application": "yourspinnakerapplicationname",
-  "pipelines": [
-    {
-      "application": "yourspinnakerapplicationname",
-      "keepWaitingPipelines": false,
-      "limitConcurrent": true,
-      "name": "Made By Armory Pipeline Templates",
-      "stages": [
-        {
-          "name": "Wait",
-          "refId": "1",
-          "requisiteStageRefIds": [],
-          "type": "wait",
-          "waitTime": 10
-        },
-        {{ module "wait.stage.module" }}
-      ],
-      "triggers": []
-    }
-  ]
+"application": "testarmory",
+"pipelines": [
+  {
+    "application": "helloworld",
+    "name": "my-pipeline-name",
+    "stages": [
+      {
+        "name": "one",
+        "type": "wait",
+        "waitTime":  10,
+        "refId": "first-stage",
+        "requisiteStageRefIds": []
+      },
+      {
+        "name": "two-a",
+        "type": "wait",
+        "waitTime":  15,
+        "refId": "my-second-stage",
+        "requisiteStageRefIds": [
+          "first-stage"
+        ]
+      },
+      {
+        "name": "two-b",
+        "type": "wait",
+        "waitTime":  30,
+        "refId": "my-other-second-stage",
+        "requisiteStageRefIds": [
+          "first-stage"
+        ]
+      },
+      {
+        "name": "last",
+        "type": "wait",
+        "waitTime":  20,
+        "refId": "my-final-stage",
+        "requisiteStageRefIds": [
+          "my-second-stage",
+          "my-other-second-stage",
+        ]
+      }
+    ]
+  }
+]
 }
