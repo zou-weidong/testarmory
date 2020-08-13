@@ -2,7 +2,7 @@
 "application": "testarmory",
 "pipelines": [
   {
-    "application": "helloworld",
+    "application": "testarmory",
     "name": "my-pipeline-name",
     "stages": [
       {
