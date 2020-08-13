@@ -13,8 +13,7 @@
           "requisiteStageRefIds": [],
           "type": "wait",
           "waitTime": 10
-        },
-        {{ module "wait.stage.module" }}
+        }
       ],
       "triggers": []
     }
